@@ -1,265 +1,86 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
+<!doctype html><html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>MADO — محادثات لحظية</title>
+<meta name="referrer" content="strict-origin-when-cross-origin"><title>البث المباشر</title>
 <style>
-:root{--bg:#0b1813;--panel:#14261f;--panel-2:#1a3329;--line:#315246;--text:#f5fbf7;--muted:#9bb5a8;--green:#54e89a;--green-dark:#087463;--cyan:#9bf0d1;--danger:#ff8790;--shadow:0 24px 80px #0008}
-*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif}body{overflow:hidden}button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.file-picker-input{position:absolute;width:2px;height:2px;opacity:0;pointer-events:none;z-index:-1}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 80% -10%,#1e6b4d33,transparent 34%),radial-gradient(circle at 8% 100%,#15433422,transparent 35%)}
-.auth{height:100dvh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 0,#174d3b 0,#09110f 43%,#040706 100%)}
-.auth-card{width:min(460px,100%);padding:34px;border:1px solid #315047;background:linear-gradient(145deg,#14221e,#0d1513);border-radius:30px;box-shadow:var(--shadow)}
-.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px}.brand-mark{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),#159c6a);color:#032014;font-size:24px;font-weight:900;box-shadow:0 8px 25px #1fdb8340}.brand-name{font-size:38px;font-weight:900;letter-spacing:-2px}.sub{text-align:center;color:var(--muted);margin:0 0 26px;font-size:14px}.tabs{display:flex;gap:7px;padding:5px;background:#09120f;border-radius:15px;margin-bottom:16px}.tabs button{flex:1;border:0;border-radius:11px;padding:11px;background:transparent;color:var(--muted)}.tabs .on{background:var(--green);color:#042014;font-weight:800}.field{width:100%;border:1px solid #2a4038;border-radius:14px;background:#09120f;color:var(--text);padding:14px 15px;outline:0;margin:6px 0;transition:.2s}.field:focus{border-color:var(--green);box-shadow:0 0 0 3px #3ee08318}.btn{border:0;border-radius:14px;padding:14px 16px;background:var(--green);color:#042014;font-weight:900;transition:.2s}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn.full{width:100%;margin-top:10px}.btn.ghost{background:#1a2b25;color:var(--text)}.msg{text-align:center;color:var(--danger);font-size:13px;min-height:19px;margin-top:12px}
-.app{height:100dvh;display:grid;grid-template-columns:360px 1fr;position:relative;background:#0e2119}.sidebar{display:flex;flex-direction:column;min-width:0;border-left:1px solid var(--line);background:linear-gradient(180deg,#173027,#10231b)}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 17px;border-bottom:1px solid var(--line)}.me,.person{display:flex;align-items:center;gap:11px;min-width:0}.avatar{width:46px;height:46px;flex:none;border-radius:16px;object-fit:cover;background:#21342d;display:grid;place-items:center;color:#b8d0c5;font-weight:900}.avatar.round{border-radius:50%}.name{font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.handle{font-size:12px;color:var(--muted);margin-top:3px}.iconbtn{width:40px;height:40px;border:1px solid #294139;border-radius:13px;background:#172821;color:#d8e9e1;font-size:18px}.search{padding:15px;border-bottom:1px solid var(--line)}.new-chat-btn{position:fixed!important;left:18px!important;bottom:18px!important;top:auto!important;width:58px;height:58px;border-radius:50%;z-index:30;background:#20c777;color:#062014;border:1px solid #52e69a;font-size:34px;line-height:1;box-shadow:0 10px 30px #0007,0 0 0 4px #20c77722;display:grid;place-items:center}.new-chat-btn:hover{transform:scale(1.05);background:#2dde8b}.new-chat-btn:active{transform:scale(.96)}.new-chat-search{margin-top:4px}.new-chat-card{width:min(520px,calc(100% - 24px))}.searchbox{display:flex;gap:8px}.searchbox .field{margin:0}.searchbox .btn{width:62px;padding:10px}.search-results{max-height:220px;overflow:auto;margin-top:8px}.result,.chatrow{display:flex;align-items:center;gap:11px;padding:11px;border-radius:15px;transition:.18s}.result:hover,.chatrow:hover,.chatrow.active{background:#1a2e26}.result-info,.chat-info{min-width:0;flex:1}.result .iconbtn{font-size:15px;width:34px;height:34px}.empty{color:#81948b;text-align:center;padding:25px 10px;font-size:13px}.chats{flex:1;overflow:auto;padding:10px 8px}.chatrow{cursor:pointer}.delete-chat{width:32px;height:32px;padding:0;font-size:13px;opacity:.55;flex:none}.delete-chat:hover{opacity:1;background:#4a2028;color:#ff9aa3}.chatrow .avatar{width:43px;height:43px}.last{font-size:12px;color:#8aa097;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}.chat-time{font-size:11px;color:#71847b;align-self:flex-start;margin-top:4px}.unread{display:inline-grid;place-items:center;min-width:21px;height:21px;padding:0 6px;border-radius:99px;background:var(--green);color:#062014;font-size:11px;font-weight:900;margin-top:5px}.main{min-width:0;display:flex;flex-direction:column;background:#0d2119}.empty-main{flex:1;display:grid;place-items:center;text-align:center;color:var(--muted);background:radial-gradient(circle at 50% 20%,#164a3624,transparent 45%)}.empty-main .welcome{padding:25px}.empty-main .hero-mark{width:74px;height:74px;border-radius:25px;display:grid;place-items:center;margin:0 auto 18px;background:linear-gradient(135deg,#1f9768,#0c543d);font-size:35px;font-weight:900;color:#bcffe1;box-shadow:0 15px 50px #17926038}.empty-main b{display:block;color:var(--text);font-size:27px;margin-bottom:9px}.chat-view{display:flex;flex-direction:column;height:100%}.chat-head{height:auto;min-height:76px;flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line);background:#18352b}.chat-head .avatar{width:45px;height:45px}.presence{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green);margin-top:4px}.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px #3ee0831f}.messages{flex:1;overflow:auto;padding:24px 8%;display:flex;flex-direction:column;gap:8px;background-color:#123025;background-image:radial-gradient(circle at 20% 10%,#4ac99118 0 2px,transparent 2px),radial-gradient(circle at 80% 90%,#67e2a313 0 1px,transparent 1px);background-size:34px 34px,48px 48px}.bubble{max-width:min(76%,650px);padding:11px 14px;border-radius:18px 18px 18px 6px;background:linear-gradient(135deg,#23483a,#1c3a30);align-self:flex-start;word-break:break-word;line-height:1.55;box-shadow:0 4px 16px #0002}.bubble.mine{background:linear-gradient(135deg,#087b69,#075e54);align-self:flex-end;border-radius:18px 18px 6px 18px}.time{font-size:10px;color:#a8beb5;margin-top:5px;direction:rtl}.composer{display:flex;align-items:center;gap:9px;padding:12px 18px;flex:0 0 auto;background:#18352b;border-top:1px solid var(--line)}.composer .field{flex:1;margin:0}.composer textarea.field{resize:none;min-height:48px;max-height:52px;line-height:1.5;overflow-y:auto}.send{width:52px;height:52px;min-width:52px;padding:0;border-radius:50%;display:grid;place-items:center;font-size:23px;background:var(--green);color:#042014;box-shadow:0 4px 14px #0003}.mobile-back{display:none;align-items:center;justify-content:center;place-items:center;line-height:1}.connection{position:fixed;bottom:14px;right:14px;z-index:5;padding:7px 11px;border:1px solid #315047;background:#12221b;color:var(--green);border-radius:999px;font-size:11px;opacity:0;transform:translateY(8px);transition:.25s}.connection.show{opacity:1;transform:none}.connection.off{color:#ffd27c;border-color:#72562d}.verified{display:inline-grid;place-items:center;width:17px;height:17px;margin-inline-start:5px;border-radius:50%;background:#2d9bf0;color:#fff;font-size:11px;font-weight:900;vertical-align:middle;box-shadow:0 0 0 2px #2d9bf022}.settings-modal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:18px;background:#020806b8;backdrop-filter:blur(8px)}.settings-card{width:min(520px,100%);max-height:calc(100dvh - 36px);overflow:auto;border:1px solid #315047;border-radius:24px;background:linear-gradient(145deg,#16251f,#0b1511);box-shadow:0 25px 90px #000b;padding:22px}.settings-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.settings-title h2{margin:0;font-size:22px}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px}.settings-grid .wide{grid-column:1/-1}.settings-label{display:block;color:#a9bbb2;font-size:12px;margin-top:8px}.profile-picker{display:flex;align-items:center;gap:14px;padding:12px;border:1px dashed #315047;border-radius:16px;margin-bottom:10px}.profile-picker .avatar{width:64px;height:64px}.settings-actions{display:flex;gap:10px;margin-top:16px}.settings-actions .btn{flex:1}.btn.danger{background:#412027;color:#ffb9bf}.btn.small{padding:9px 12px;font-size:12px}.ticks{font-size:14px;letter-spacing:-5px;margin-inline-start:5px;color:#b5c9c2;direction:ltr;display:inline-block}.ticks.read{color:#57c7ff}.record-btn{width:48px!important;min-width:48px;padding:0!important;background:#23483a;color:#bfe9d5;font-size:19px}.record-btn.recording{background:#d95264;color:#fff;animation:pulse 1.15s infinite}@keyframes pulse{50%{box-shadow:0 0 0 7px #d9526433}}.audio-bubble{display:flex;align-items:center;gap:7px}.audio-bubble audio{width:min(260px,62vw);height:34px;accent-color:var(--green)}
-@media(max-width:780px){.new-chat-btn{left:14px;bottom:14px;width:56px;height:56px}.app{grid-template-columns:1fr}.main{display:none}.sidebar{display:flex}.app.chat-open .sidebar{display:none}.app.chat-open .main{display:flex}.mobile-back{display:grid}.messages{padding:17px 4%}.bubble{max-width:87%}.auth-card{padding:26px 20px}.chat-head{padding:10px 13px}.composer{padding:10px 12px}}
-
-/* FIX v2: رأس المحادثة وخانة الكتابة ثابتان، والتمرير داخل الرسائل فقط */
-html,body,#app{height:100%;min-height:0}
-.app,.main,.chat-view{min-height:0;overflow:hidden}
-.chat-view{position:relative;height:100%;width:100%;overflow:hidden}
-.chat-head{position:absolute;top:0;left:0;right:0;height:88px;min-height:88px;z-index:10;flex:none;display:flex;align-items:center}
-.messages{position:absolute;top:88px;bottom:76px;left:0;right:0;min-height:0;height:auto;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;overscroll-behavior-x:none;touch-action:pan-y;-webkit-overflow-scrolling:touch;padding-top:18px;padding-bottom:18px}
-.composer{position:absolute;left:0;right:0;bottom:0;height:76px;min-height:76px;z-index:20;flex:none;display:flex;align-items:center}
-@media(max-width:780px){
-  .chat-head{height:92px;min-height:92px;padding:8px 12px}
-  .messages{top:92px;bottom:76px;padding-top:14px;padding-bottom:14px}
-  .composer{height:76px;min-height:76px;padding:10px 10px}
-}
-
-/* Final composer adjustment: no microphone, centered green send button */
-.composer{align-items:center!important;height:76px!important;min-height:76px!important;padding:10px 14px!important;gap:10px!important}
-.composer textarea.field{height:52px!important;min-height:52px!important;max-height:52px!important;overflow-y:auto!important;margin:0!important}
-.send{width:52px!important;height:52px!important;min-width:52px!important;max-width:52px!important;border-radius:50%!important;padding:0!important;display:grid!important;place-items:center!important;background:#54e89a!important;color:#042014!important;font-size:23px!important;line-height:1!important;flex:0 0 52px!important}
-@media(max-width:780px){.composer{height:76px!important;min-height:76px!important;padding:10px 10px!important}.messages{bottom:76px!important}}
-
-/* MADO SPEED + STICKERS */
-.sticker-btn{width:46px;height:46px;min-width:46px;border:1px solid #315246;border-radius:14px;background:#23483a;color:#d9f8eb;font-size:20px;display:grid;place-items:center;padding:0}
-.sticker-btn:active,.send:active{transform:scale(.94)}
-.sticker-bubble{padding:5px!important;background:transparent!important;box-shadow:none!important}
-.sticker-img{display:block;width:min(190px,58vw);height:min(190px,58vw);object-fit:cover;border-radius:18px}
-.sticker-picker{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:18px;background:#020806b8;backdrop-filter:blur(8px)}
-.sticker-card{width:min(420px,100%);border:1px solid #315047;border-radius:22px;background:linear-gradient(145deg,#16251f,#0b1511);padding:20px;box-shadow:0 25px 90px #000b}
-.sticker-card h3{margin:0 0 8px}.sticker-actions{display:flex;gap:9px;margin-top:12px}.sticker-actions .btn{flex:1}
-
-.new-chat-card{max-width:520px}.new-chat-search{display:flex;gap:8px;margin:12px 0}.new-chat-search .field{flex:1}.new-chat-search .btn{min-width:70px}.search-results{max-height:55vh;overflow:auto}
-</style>
-</head>
-<body>
-<div id="auth" class="auth"><div class="auth-card"><div class="brand"><div class="brand-mark">M</div><div class="brand-name">MADO</div></div><p class="sub">رسائل خاصة، سريعة، ومتزامنة لحظيًا</p><div class="tabs"><button id="loginTab" class="on">تسجيل الدخول</button><button id="signupTab">إنشاء حساب</button></div><input id="username" class="field" placeholder="@username" autocomplete="username"><input id="password" class="field" type="password" placeholder="كلمة المرور" autocomplete="current-password"><input id="password2" class="field hidden" type="password" placeholder="تأكيد كلمة المرور"><button id="authBtn" class="btn full" type="button">دخول</button><div id="authMsg" class="msg"></div></div></div>
-<div id="app" class="app hidden"><aside class="sidebar"><div class="top"><div class="me"><img id="myAvatar" class="avatar round"><div><div id="myName" class="name">-</div><div id="myHandle" class="handle">-</div></div></div><button class="iconbtn" id="settingsBtn" title="الإعدادات">⚙</button></div><button id="newChatBtn" class="new-chat-btn" title="محادثة جديدة" type="button" aria-label="محادثة جديدة">+</button><div id="chatList" class="chats"></div></aside><main class="main"><div id="emptyMain" class="empty-main"><div class="welcome"><div class="hero-mark">M</div><b>ابدأ محادثة جديدة</b><span>ابحث عن مستخدم من القائمة وراسلْه فورًا</span></div></div><div id="chatView" class="chat-view hidden"><header class="chat-head"><button id="backBtn" class="iconbtn mobile-back">‹</button><img id="chatAvatar" class="avatar round"><div><div id="chatName" class="name">-</div><div class="presence"><span class="dot"></span><span id="presenceText">جارٍ تحميل آخر ظهور...</span></div><div id="chatHandle" class="handle">-</div></div></header><div id="messages" class="messages"></div><div class="composer"><button id="stickerBtn" class="sticker-btn" title="إرسال ملصق" type="button">😊</button><textarea id="messageInput" class="field" rows="1" placeholder="اكتب رسالتك هنا ❤️"></textarea><button id="sendBtn" class="btn send" title="إرسال">➤</button><input id="stickerFile" type="file" accept="image/*" class="hidden"></div></div></main></div><div id="newChatModal" class="settings-modal hidden"><div class="settings-card new-chat-card"><div class="settings-title"><h2>محادثة جديدة</h2><button id="closeNewChat" class="iconbtn" type="button">×</button></div><div class="searchbox new-chat-search"><input id="userSearch" class="field" placeholder="أدخل اسم المستخدم مثل @ahmed_123" autocomplete="off"><button id="searchBtn" class="btn" type="button">بحث</button></div><div id="results" class="search-results"></div></div></div><div id="settingsModal" class="settings-modal hidden"><div class="settings-card"><div class="settings-title"><h2>إعدادات الحساب</h2><button id="closeSettings" class="iconbtn" type="button">×</button></div><div class="profile-picker"><img id="settingsAvatar" class="avatar round"><div><b>صورة البروفايل</b><div class="handle">ستظهر صورتك لجميع المستخدمين</div><button id="chooseAvatar" class="btn small" type="button">اختيار صورة</button><input id="avatarFile" type="file" accept="image/*" class="file-picker-input"></div></div><div class="settings-grid"><div class="wide"><label class="settings-label">اسم المستخدم</label><input id="settingsUsername" class="field" placeholder="@username"></div><div><label class="settings-label">الاسم الظاهر</label><input id="settingsDisplayName" class="field" placeholder="اسمك"></div><div><label class="settings-label">كلمة مرور جديدة</label><input id="settingsPassword" class="field" type="password" placeholder="اتركها بدون تغيير"></div></div><div id="settingsMsg" class="msg"></div><div class="settings-actions"><button id="saveSettingsBtn" class="btn" type="button">حفظ التغييرات</button><button id="logoutBtn" class="btn danger" type="button">تسجيل الخروج</button></div></div></div><div id="stickerModal" class="sticker-picker hidden"><div class="sticker-card"><h3>إرسال ملصق</h3><div class="handle">اختر صورة، وسيتم ضغطها تلقائيًا لتصل بأسرع شكل.</div><div class="sticker-actions"><button id="cancelSticker" class="btn ghost" type="button">إلغاء</button><button id="chooseSticker" class="btn" type="button">اختيار صورة</button></div></div></div><div id="connection" class="connection">● اتصال لحظي</div>
+*{box-sizing:border-box}body{margin:0;background:#070709;color:#fff;font-family:Arial,Tahoma,sans-serif}
+header{padding:20px 16px;text-align:center;background:linear-gradient(135deg,#180507,#3d080d);border-bottom:1px solid #5a1018}
+h1{margin:0}.sub{color:#d9bfc2;margin-top:7px;font-size:13px}main{max-width:1100px;margin:auto;padding:20px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.card{background:#12080a;border:1px solid #3d080d;border-radius:18px;overflow:hidden}
+.thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:#23080b}.body{padding:14px}.name{font-size:18px;font-weight:bold;margin:9px 0 12px}
+.live{display:inline-block;background:#b00016;border-radius:50px;padding:4px 9px;font-size:11px}.watch{width:100%;border:0;border-radius:12px;padding:13px;background:#e0001b;color:#fff;font-weight:bold;cursor:pointer}
+.empty{text-align:center;padding:70px 20px;color:#92777b;border:1px dashed #5a1018;border-radius:18px}
+#modal{display:none;position:fixed;inset:0;background:#000f;z-index:100;align-items:center;justify-content:center}
+.playerBox{width:min(1100px,96vw);background:#0b0b0d;border:1px solid #3d080d;border-radius:18px;overflow:hidden}
+.playerTop{height:55px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:#12080a}
+.closeBtn,.controlBtn{border:0;background:#3d080d;color:#fff;border-radius:10px;cursor:pointer}.closeBtn{padding:9px 13px}
+.videoWrap{position:relative;background:#000;width:100%;aspect-ratio:16/9}.videoWrap video,.videoWrap iframe{width:100%;height:100%;display:block;border:0;background:#000}
+.controls{display:flex;align-items:center;gap:8px;padding:10px;background:#12080a}.controlBtn{min-width:42px;height:38px;font-size:17px}
+.status{flex:1;color:#d9bfc2;font-size:12px;text-align:center}.hint{padding:0 12px 12px;color:#92777b;font-size:12px;text-align:center}
+@media(max-width:650px){.grid{grid-template-columns:1fr 1fr;gap:10px}.body{padding:9px}.name{font-size:14px}.watch{padding:10px;font-size:13px}.playerBox{width:100vw;border:0;border-radius:0}}
+@media(orientation:landscape) and (max-height:600px){#modal{background:#000}.playerBox{width:100vw;height:100vh;border:0;border-radius:0;display:flex;flex-direction:column}.playerTop{display:none}.videoWrap{flex:1;aspect-ratio:auto}.controls{height:52px}.hint{display:none}}
+</style></head><body>
+<header><h1>📺 البث المباشر</h1><div class="sub">مشاهدة مباشرة من داخل الموقع</div></header>
+<main><div id="grid" class="grid"></div><div id="empty" class="empty" style="display:none">لا توجد بثوث متاحة حاليًا.</div></main>
+<div id="modal"><div class="playerBox">
+<div class="playerTop"><b id="title">البث المباشر</b><button id="close" class="closeBtn">✕ إغلاق</button></div>
+<div id="videoWrap" class="videoWrap"></div>
+<div class="controls"><button id="playBtn" class="controlBtn">▶</button><button id="muteBtn" class="controlBtn">🔊</button><button id="fullBtn" class="controlBtn">⛶</button><div id="status" class="status">جاهز للمشاهدة</div></div>
+<div class="hint">روابط YouTube يجب أن تسمح بالتضمين. المشغل يظل داخل موقعك.</div>
+</div></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
 <script>
-const DB='https://mohmed-e9bc6-default-rtdb.firebaseio.com',NS='mado_users';let me=null,currentUser=null,isSignup=false,chatStream=null,listStream=null,profileStream=null,pollTimer=null,presenceTimer=null,lastMessageSignature='',lastKnownIncomingTime=0,sendBusy=false,mediaRecorder=null,audioChunks=[],chatRenderRunning=false,chatRenderQueued=false,chatRenderToken=0,chatListSignature='',settingsPhoto='';const $=id=>document.getElementById(id);const esc=s=>encodeURIComponent(s).replace(/\./g,'%2E').replace(/\$/g,'%24').replace(/#/g,'%23').replace(/\[/g,'%5B').replace(/\]/g,'%5D').replace(/\//g,'%2F');const key=(a,b)=>[a,b].sort().join('__');const safe=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const avatar=u=>u&&u.photo?u.photo:'';const fallbackAvatar=(label='M')=>'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" rx="50" fill="#1d4437"/><text x="50%" y="60%" text-anchor="middle" fill="#d5ffe9" font-size="42" font-family="Arial">${label.slice(0,1).toUpperCase()}</text></svg>`);
-async function db(path,opts={}){const r=await fetch(DB+'/'+path+'.json?ts='+Date.now(),{cache:'no-store',...opts,headers:{'Content-Type':'application/json',...(opts.headers||{})}});let d=null;try{d=await r.json()}catch{}if(!r.ok)throw Error((d&&d.error)||'DATABASE_'+r.status);return d}
-async function dbRootPatch(updates){const r=await fetch(DB+'/.json?ts='+Date.now(),{method:'PATCH',cache:'no-store',headers:{'Content-Type':'application/json'},body:JSON.stringify(updates)});let d=null;try{d=await r.json()}catch{}if(!r.ok)throw Error((d&&d.error)||'DATABASE_'+r.status);return d}
-function flash(text,off=false){const el=$('connection');el.textContent=text;el.classList.toggle('off',off);el.classList.add('show');clearTimeout(flash.t);flash.t=setTimeout(()=>el.classList.remove('show'),2200)}
-function stream(path,onChange){let stopped=false,es;const open=()=>{if(stopped)return;es=new EventSource(DB+'/'+path+'.json?stream=1');const event=()=>onChange();es.addEventListener('put',event);es.addEventListener('patch',event);es.onerror=()=>{es.close();flash('إعادة الاتصال... ',true);setTimeout(open,1500)};flash('● اتصال لحظي')};open();return()=>{stopped=true;if(es)es.close()}}
-function showMsg(x){$('authMsg').textContent=x}function validUser(u){return /^@[A-Za-z0-9_]{3,24}$/.test(u)}function toggleSignup(v){isSignup=v;$('loginTab').classList.toggle('on',!v);$('signupTab').classList.toggle('on',v);$('password2').classList.toggle('hidden',!v);$('authBtn').textContent=v?'إنشاء الحساب':'دخول';showMsg('')}
-$('loginTab').onclick=()=>toggleSignup(false);$('signupTab').onclick=()=>toggleSignup(true);
-$('authBtn').type='button';
-$('authBtn').onclick=async()=>{
-  let u=$('username').value.trim(),p=$('password').value;
-  if(!u.startsWith('@'))u='@'+u;
-  if(!validUser(u))return showMsg('اكتب اسم مستخدم صحيحًا مثل @ahmed_123');
-  if(!p)return showMsg('اكتب كلمة المرور');
-  if(p.length<4)return showMsg('كلمة المرور يجب أن تكون 4 أحرف على الأقل');
-  if(isSignup&&p!==$('password2').value)return showMsg('تأكيد كلمة المرور غير مطابق');
-
-  const btn=$('authBtn');
-  btn.disabled=true;
-  btn.textContent=isSignup?'جاري إنشاء الحساب...':'جاري تسجيل الدخول...';
-
-  try{
-    const path=NS+'/'+esc(u);
-    let existing=await db(path);
-
-    // توافق مع الحسابات القديمة: إذا لم نجد المفتاح المباشر، نبحث داخل mado_users.
-    if((existing===null||existing===undefined) && !isSignup){
-      const all=await db(NS);
-      if(all&&typeof all==='object'){
-        const wanted=u.toLowerCase();
-        for(const [k,v] of Object.entries(all)){
-          if(!v||typeof v!=='object')continue;
-          const name=String(v.username??k??'').trim();
-          const normalized=(name.startsWith('@')?name:'@'+name).toLowerCase();
-          if(normalized===wanted){
-            existing={...v,username:u};
-            break;
-          }
-        }
-      }
-    }
-
-    if(isSignup){
-      if(existing&&typeof existing==='object'){
-        const existingName=String(existing.username??'').startsWith('@')
-          ?String(existing.username)
-          :'@'+String(existing.username??'');
-        if(existingName.toLowerCase()===u.toLowerCase()){
-          toggleSignup(false);
-          $('username').value=u;
-          $('password').value='';
-          showMsg('هذا الحساب موجود بالفعل. استخدم تسجيل الدخول وأدخل كلمة المرور الصحيحة.');
-          return;
-        }
-      }
-
-      const now=Date.now();
-      const user={
-        username:u,
-        password:p,
-        displayName:u.slice(1),
-        photo:'',
-        verified:false,
-        blocked:false,
-        createdAt:now,
-        updatedAt:now
-      };
-      const saved=await db(path,{method:'PUT',body:JSON.stringify(user)});
-      if(!saved||String(saved.username)!==u)throw Error('SAVE_VERIFY');
-      me=saved;
-      localStorage.setItem('madoUser',u);
-      sessionStorage.setItem('madoUser',u);
-      await openApp();
-      return;
-    }
-
-    const user=existing;
-    if(!user||typeof user!=='object')
-      return showMsg('هذا الحساب غير موجود. اختر «إنشاء حساب» إذا لم يكن لديك حساب.');
-
-    const storedName=String(user.username??'').trim();
-    const storedNormalized=(storedName?(storedName.startsWith('@')?storedName:'@'+storedName):u).toLowerCase();
-    if(storedNormalized!==u.toLowerCase())
-      return showMsg('اسم المستخدم غير صحيح أو الحساب غير موجود.');
-
-    // دعم كلمة المرور الحالية والحقول القديمة إن وُجدت.
-    const storedPass=user.password??user.pass??user.passWord??user.passwordText;
-    if(String(storedPass??'')!==String(p))
-      return showMsg('كلمة المرور غير صحيحة.');
-
-    if(user.blocked)return showMsg('هذا الحساب محظور.');
-
-    me={...user,username:u};
-    localStorage.setItem('madoUser',u);
-    sessionStorage.setItem('madoUser',u);
-    await openApp();
-  }catch(e){
-    console.error('MADO LOGIN ERROR:',e);
-    const msg=String(e?.message||e||'');
-    if(msg==='SAVE_VERIFY'){
-      showMsg('تم إنشاء الحساب لكن تعذر تأكيده في Firebase. حاول تسجيل الدخول مرة أخرى.');
-    }else if(msg.includes('PERMISSION_DENIED')||msg.includes('Permission denied')){
-      showMsg('Firebase رفض الوصول للبيانات. راجع Rules الخاصة بقاعدة البيانات.');
-    }else if(msg.includes('Failed to fetch')||msg.includes('NetworkError')){
-      showMsg('لا يوجد اتصال بـ Firebase. تأكد من الإنترنت ثم حاول مرة أخرى.');
-    }else{
-      showMsg('تعذر تسجيل الدخول: '+(msg||'خطأ غير معروف'));
-    }
-  }finally{
-    btn.disabled=false;
-    btn.textContent=isSignup?'إنشاء الحساب':'دخول';
-  }
+const firebaseConfig = {
+  apiKey: "AIzaSyA2k-wSnJ3UjSNSv1amcodfjSNJthu_P6Y",
+  authDomain: "mohmed-e9bc6.firebaseapp.com",
+  databaseURL: "https://mohmed-e9bc6-default-rtdb.firebaseio.com",
+  projectId: "mohmed-e9bc6",
+  storageBucket: "mohmed-e9bc6.firebasestorage.app",
+  appId: "1:356929992041:android:5b6b56c609e97b2bf839f8"
 };
-function badge(u){return u&&u.verified?'<span class="verified" title="حساب موثّق">✓</span>':''}function presenceLabel(u){if(!u||!u.lastSeen)return 'آخر ظهور غير متاح';const d=new Date(u.lastSeen),diff=Date.now()-u.lastSeen;if(diff<90000)return 'متصل الآن';const time=d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});const day=d.toLocaleDateString('ar-EG',{day:'numeric',month:'short'});return 'آخر ظهور '+day+'، '+time}function renderChatUser(u){if(!u)return;currentUser=u;$('chatAvatar').src=avatar(u)||fallbackAvatar(u.displayName||'M');$('chatName').innerHTML=safe(u.displayName||u.username.slice(1))+badge(u);$('chatHandle').textContent=u.username;$('presenceText').textContent=presenceLabel(u);$('presenceText').previousElementSibling.style.background=presenceLabel(u)==='متصل الآن'?'var(--green)':'#8aa79a'}function touchPresence(){if(!me)return;return db(NS+'/'+esc(me.username),{method:'PATCH',body:JSON.stringify({lastSeen:Date.now()})}).then(()=>{me.lastSeen=Date.now()}).catch(()=>{})}function renderMe(){$('myName').innerHTML=safe(me.displayName||me.username.slice(1))+badge(me);$('myHandle').textContent=me.username;$('myAvatar').src=avatar(me)||fallbackAvatar(me.displayName||'M')}
-async function searchUsers(){const q=$('userSearch').value.trim();$('results').innerHTML='';if(!q)return;const u=q.startsWith('@')?q:'@'+q;try{const exact=await db(NS+'/'+esc(u));if(!exact)return $('results').innerHTML='<div class="empty">المستخدم غير موجود</div>';if(exact.username===me.username)return $('results').innerHTML='<div class="empty">هذا حسابك</div>';const row=document.createElement('div');row.className='result';row.innerHTML=`<img class="avatar round" src="${safe(avatar(exact)||fallbackAvatar(exact.displayName||'M'))}"><div class="result-info"><div class="name">${safe(exact.displayName||exact.username.slice(1))}${badge(exact)}</div><div class="handle">${safe(exact.username)}</div></div><button class="iconbtn">↗</button>`;row.onclick=()=>openChat(exact);$('results').appendChild(row)}catch{$('results').innerHTML='<div class="empty">حدث خطأ في البحث</div>'}}
-$('searchBtn').onclick=searchUsers;$('userSearch').onkeydown=e=>{if(e.key==='Enter')searchUsers()};
-async function loadChats(){if(chatRenderRunning){chatRenderQueued=true;return}chatRenderRunning=true;const token=++chatRenderToken;try{let all=await db('chats/'+esc(me.username));if(all===null||typeof all!=="object"){chatListSignature='';$('chatList').replaceChildren(Object.assign(document.createElement('div'),{className:'empty',innerHTML:'لا توجد محادثات بعد<br>اضغط + أسفل اليسار لبدء محادثة'}));return}let map={...all};/* Chat previews come only from the persistent per-user chat index. Never scan the whole messages tree here: that made startup slow and could temporarily hide chats during a refresh. */const rows=Object.entries(map).sort((a,b)=>(b[1].updatedAt||0)-(a[1].updatedAt||0));const users=await Promise.all(rows.map(async([other,c])=>{try{return {other,c,u:await db(NS+'/'+esc(other))}}catch{return null}}));if(token!==chatRenderToken)return;const valid=users.filter(Boolean);const nextSig=valid.map(({other,c,u})=>other+':'+(c.updatedAt||0)+':'+(c.lastMessage||'')+':'+(c.unread||0)+':'+(u.updatedAt||0)).join('|');if(nextSig===chatListSignature&&$('chatList').children.length)return;chatListSignature=nextSig;const fragment=document.createDocumentFragment();if(!valid.length){const empty=document.createElement('div');empty.className='empty';empty.innerHTML='لا توجد محادثات بعد<br>اضغط + أسفل اليسار لبدء محادثة';fragment.appendChild(empty)}else valid.forEach(({other,c,u})=>{const d=document.createElement('div');d.className='chatrow'+(currentUser&&currentUser.username===u.username?' active':'');d.innerHTML=`<img class="avatar round" src="${safe(avatar(u)||fallbackAvatar(u.displayName||u.username))}"><div class="chat-info"><div class="name">${safe(u.displayName||u.username.slice(1))}${badge(u)}</div><div class="last">${safe(c.lastMessage||'ابدأ المحادثة')}</div></div><span class="chat-time">${c.updatedAt?new Date(c.updatedAt).toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'}):''}${c.unread?`<span class="unread">${c.unread>99?'99+':c.unread}</span>`:''}</span><button class="iconbtn delete-chat" title="حذف المحادثة من القائمة" type="button">🗑</button>`;d.onclick=e=>{if(e.target.closest('.delete-chat')){e.stopPropagation();deleteChatFromList(u);return}openChat(u)};fragment.appendChild(d)});$('chatList').replaceChildren(fragment)}catch(e){/* Never replace the existing chat list on a transient refresh/network error. */}finally{chatRenderRunning=false;if(chatRenderQueued){chatRenderQueued=false;loadChats()}}}
-async function deleteChatFromList(u){
-  if(!u||!me)return;
-  const other=String(u.username||'').trim(), sender=String(me.username||'').trim();
-  if(!other)return;
-  if(!confirm('حذف المحادثة ورسائلها نهائيًا؟'))return;
-  const btn=document.querySelector('[data-delete-chat="'+CSS.escape(other)+'"]');
-  if(btn)btn.disabled=true;
-  try{
-    const pairKey=key(sender,other);
-    const updates={};
-    updates['chats/'+esc(sender)+'/'+esc(other)]=null;
-    updates['chats/'+esc(other)+'/'+esc(sender)]=null;
-    updates['messages/'+esc(pairKey)]=null;
-    await dbRootPatch(updates);
-    if(currentUser&&currentUser.username===other){
-      if(chatStream)chatStream(); if(profileStream)profileStream();
-      chatStream=null;profileStream=null;currentUser=null;
-      $('app').classList.remove('chat-open');$('chatView').classList.add('hidden');$('emptyMain').classList.remove('hidden');
-      $('messages').innerHTML='';$('messages').removeAttribute('data-rendered');lastMessageSignature='';
-    }
-    chatListSignature='';
-    await loadChats();
-    flash('تم حذف المحادثة ورسائلها');
-  }catch(e){console.error('DELETE CHAT ERROR:',e);flash('تعذر حذف المحادثة',true);await loadChats()}
-  finally{if(btn)btn.disabled=false}
-}
-async function ensureChat(){for(const [a,b] of [[me.username,currentUser.username],[currentUser.username,me.username]]){const p='chats/'+esc(a)+'/'+esc(b);if(!await db(p))await db(p,{method:'PUT',body:JSON.stringify({lastMessage:'',updatedAt:Date.now()})})}}
-async function openChat(u){
-  renderChatUser(u); lastMessageSignature=''; lastKnownIncomingTime=0;
-  $('messages').removeAttribute('data-rendered'); $('emptyMain').classList.add('hidden'); $('chatView').classList.remove('hidden'); $('app').classList.add('chat-open');
-  currentUser=u;
-  const pair=key(me.username,u.username), cacheKey='mado_messages_cache:'+pair;
-  try{const cached=JSON.parse(localStorage.getItem(cacheKey)||'null'); if(cached&&typeof cached==='object') renderMessagesData(cached)}catch{}
-  if(chatStream)chatStream(); if(profileStream)profileStream();
-  chatStream=stream('messages/'+esc(pair),()=>loadMessages());
-  profileStream=stream(NS+'/'+esc(u.username),async()=>{const fresh=await db(NS+'/'+esc(u.username));if(fresh){renderChatUser(fresh)}});
-  Promise.allSettled([loadMessages(),db('chats/'+esc(me.username)+'/'+esc(u.username),{method:'PATCH',body:JSON.stringify({unread:0})})]);
-}
-$('backBtn').onclick=()=>{if(chatStream)chatStream();if(profileStream)profileStream();chatStream=null;profileStream=null;currentUser=null;$('app').classList.remove('chat-open');$('chatView').classList.add('hidden');$('emptyMain').classList.remove('hidden')};
-async function markIncomingRead(list){const pending=list.filter(([id,m])=>(m.senderUsername||m.from)!==me.username&&!(m.readBy&&m.readBy[me.username]));await Promise.all(pending.map(([id])=>db('messages/'+esc(key(me.username,currentUser.username))+'/'+esc(id),{method:'PATCH',body:JSON.stringify({readBy:{[me.username]:Date.now()}})}).catch(()=>{})))}function renderMessagesData(data){
-  if(!currentUser)return;
-  const list=Object.entries(data||{}).sort((a,b)=>(a[1].time||0)-(b[1].time||0));
-  const sig=list.map(x=>x[0]+':'+x[1].time+':'+(x[1].text||'')+':'+(x[1].kind||'')).join('|');
-  const incoming=list.filter(x=>(x[1].senderUsername||x[1].from)!==me.username).reduce((n,x)=>Math.max(n,x[1].time||0),0);
-  const box=$('messages'),firstRender=!box.dataset.rendered,nearBottom=box.scrollHeight-box.scrollTop-box.clientHeight<100,oldScrollTop=box.scrollTop,oldScrollHeight=box.scrollHeight;
-  if(sig!==lastMessageSignature){
-    lastMessageSignature=sig; box.innerHTML=list.length?'':'<div class="empty">ابدأ المحادثة 👋</div>';
-    for(const [,m] of list){
-      const senderUsername=m.senderUsername||m.from||'',receiverUsername=m.receiverUsername||m.to||'';
-      const mine=senderUsername===me.username&&receiverUsername===currentUser.username;
-      const read=mine&&m.readBy&&m.readBy[receiverUsername];
-      const ticks=mine?`<span class="ticks ${read?'read':''}">${read?'✓✓':'✓'}</span>`:'';
-      const d=document.createElement('div'); d.className='bubble '+(mine?'mine ':'')+(m.kind==='sticker'?'sticker-bubble':'');
-      const content=m.kind==='audio'?`<div class="audio-bubble">🎧<audio controls preload="metadata" src="${safe(m.audio||'')}"></audio></div>`:m.kind==='sticker'?`<img class="sticker-img" src="${safe(m.sticker||'')}" alt="ملصق" loading="eager">`:`<div>${safe(m.text||'')}</div>`;
-      const shownSender=m.senderName||senderUsername||'مستخدم'; d.innerHTML=content+`<div class="time">${safe(shownSender)} · ${new Date(m.time||Date.now()).toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'})}${ticks}</div>`; box.appendChild(d);
-    }
-    if(firstRender||nearBottom)box.scrollTop=box.scrollHeight;else box.scrollTop=Math.max(0,oldScrollTop+(box.scrollHeight-oldScrollHeight));
-    box.dataset.rendered='1';
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const grid=document.getElementById("grid"),empty=document.getElementById("empty"),modal=document.getElementById("modal"),wrap=document.getElementById("videoWrap"),title=document.getElementById("title"),status=document.getElementById("status");
+let hls=null,currentType=null;
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+function youtubeId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1).split("/")[0];if(u.hostname.includes("youtube.com")){if(u.pathname==="/watch")return u.searchParams.get("v");if(u.pathname.startsWith("/live/"))return u.pathname.split("/")[2];if(u.pathname.startsWith("/shorts/"))return u.pathname.split("/")[2];if(u.pathname.startsWith("/embed/"))return u.pathname.split("/")[2]}}catch(e){}return null}
+function openPlayer(item){
+ title.textContent=item.name||"البث المباشر";modal.style.display="flex";document.body.style.overflow="hidden";wrap.innerHTML="";status.textContent="جاري التحميل...";
+ currentType=item.type||"hls";
+ if(currentType==="youtube"){
+  const id=youtubeId(item.streamUrl);if(!id){status.textContent="رابط YouTube غير صحيح";return}
+  const iframe=document.createElement("iframe");
+  iframe.allow="autoplay; encrypted-media; fullscreen; picture-in-picture";
+  iframe.allowFullscreen=true;
+  iframe.referrerPolicy="strict-origin-when-cross-origin";
+  const siteOrigin = window.location.origin;
+  const params = new URLSearchParams({
+    autoplay:"1",
+    playsinline:"1",
+    rel:"0",
+    enablejsapi:"1"
+  });
+  if (siteOrigin && siteOrigin !== "null" && siteOrigin.startsWith("http")) {
+    params.set("origin", siteOrigin);
+    params.set("widget_referrer", siteOrigin);
   }
-  if(incoming>lastKnownIncomingTime&&lastKnownIncomingTime!==0&&document.hidden){document.title='🔔 رسالة جديدة — MADO';setTimeout(()=>document.title='MADO — محادثات لحظية',1800)}
-  lastKnownIncomingTime=Math.max(lastKnownIncomingTime,incoming);
-  if(list.some(x=>(x[1].senderUsername||x[1].from)!==me.username&&!(x[1].readBy&&x[1].readBy[me.username])))markIncomingRead(list);
+  iframe.src="https://www.youtube.com/embed/"+encodeURIComponent(id)+"?"+params.toString();
+  wrap.appendChild(iframe);
+  document.getElementById("playBtn").style.display="none";document.getElementById("muteBtn").style.display="none";status.textContent="YouTube — التشغيل داخل الموقع";
+ }else{
+  document.getElementById("playBtn").style.display="block";document.getElementById("muteBtn").style.display="block";
+  const video=document.createElement("video");video.controls=false;video.playsInline=true;video.setAttribute("playsinline","");wrap.appendChild(video);
+  if(window.Hls&&Hls.isSupported()){hls=new Hls({enableWorker:true,lowLatencyMode:true,maxBufferLength:8});hls.loadSource(item.streamUrl);hls.attachMedia(video);hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));}
+  else if(video.canPlayType("application/vnd.apple.mpegurl")){video.src=item.streamUrl;video.play().catch(()=>{})}
+  else status.textContent="المتصفح لا يدعم HLS";
+  document.getElementById("playBtn").onclick=()=>video.paused?video.play():video.pause();
+  document.getElementById("muteBtn").onclick=()=>{video.muted=!video.muted;document.getElementById("muteBtn").textContent=video.muted?"🔇":"🔊"};
+  status.textContent="البث يعمل داخل الموقع";
+ }
 }
-async function loadMessages(){if(!currentUser)return;try{const pair=key(me.username,currentUser.username),data=await db('messages/'+esc(pair));try{localStorage.setItem('mado_messages_cache:'+pair,JSON.stringify(data||{}))}catch{}renderMessagesData(data||{})}catch{}}
-async function upsertChatPreview(owner,other,patch,incrementUnread=false){const path='chats/'+esc(owner)+'/'+esc(other),current=await db(path)||{},next={...current,...patch};if(incrementUnread)next.unread=(Number(current.unread)||0)+1;await db(path,{method:'PUT',body:JSON.stringify(next)});return next}
-function stickerDataUrl(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const size=512,c=document.createElement('canvas'),ctx=c.getContext('2d');c.width=size;c.height=size;const scale=Math.max(size/img.width,size/img.height),w=img.width*scale,h=img.height*scale;ctx.drawImage(img,(size-w)/2,(size-h)/2,w,h);resolve(c.toDataURL('image/webp',.78))};img.onerror=reject;img.src=r.result};r.onerror=reject;r.readAsDataURL(file)})}
-async function writeMessage(m){
-  if(!me||!currentUser||sendBusy)return;
-  const sender=String(me.username||'').trim(),receiver=String(currentUser.username||'').trim();
-  if(!sender||!receiver||sender===receiver){flash('تعذر تحديد طرفي المحادثة',true);return}
-  sendBusy=true; $('sendBtn').disabled=true;
-  try{
-    const k=key(sender,receiver),id=Date.now()+'_'+Math.random().toString(36).slice(2);
-    const message={...m,from:sender,to:receiver,senderUsername:sender,receiverUsername:receiver,senderName:me.displayName||sender.slice(1),senderPhoto:me.photo||'',receiverName:currentUser.displayName||receiver.slice(1),receiverPhoto:currentUser.photo||'',senderVerified:!!me.verified,receiverVerified:!!currentUser.verified};
-    const preview=message.kind==='sticker'?'🖼️ ملصق':message.kind==='audio'?'🎙️ رسالة صوتية':message.text; const now=message.time||Date.now();
-    const senderPath='chats/'+esc(sender)+'/'+esc(receiver),recipientPath='chats/'+esc(receiver)+'/'+esc(sender);
-    const senderPatch={lastMessage:preview,updatedAt:now,senderUsername:sender,receiverUsername:receiver,unread:0,displayName:currentUser.displayName||receiver.slice(1),photo:currentUser.photo||'',verified:!!currentUser.verified};
-    const recipientPatch={lastMessage:preview,updatedAt:now,senderUsername:sender,receiverUsername:receiver,unread:1,displayName:me.displayName||sender.slice(1),photo:me.photo||'',verified:!!me.verified};
-    const updates={}; updates['messages/'+esc(k)+'/'+id]=message; updates[senderPath]=senderPatch; updates[recipientPath]=recipientPatch;
-    let cached={}; try{cached=JSON.parse(localStorage.getItem('mado_messages_cache:'+k)||'{}')||{}}catch{}
-    cached[id]=message; try{localStorage.setItem('mado_messages_cache:'+k,JSON.stringify(cached))}catch{}
-    renderMessagesData(cached);
-    await dbRootPatch(updates);
-    chatListSignature='';
-  }catch(e){flash('فشل الإرسال — حاول مرة أخرى',true);await loadMessages()}
-  finally{sendBusy=false;$('sendBtn').disabled=false;$('messageInput').focus()}
-}
-async function sendSticker(file){if(!file||!currentUser)return;try{flash('جاري تجهيز الملصق...');const image=await stickerDataUrl(file);await writeMessage({kind:'sticker',sticker:image,time:Date.now(),readBy:{[me.username]:Date.now()}})}catch{flash('تعذر تجهيز الملصق',true)}finally{$('stickerFile').value=''}}
-function resizeComposer(){const input=$('messageInput');if(!input)return;input.style.height='auto';input.style.height=Math.min(input.scrollHeight,132)+'px'}
-async function send(){const t=$('messageInput').value.trim();if(!t||!currentUser)return;$('messageInput').value='';resizeComposer();await writeMessage({text:t,kind:'text',time:Date.now(),readBy:{[me.username]:Date.now()}})}
-async function startRecording(){if(!navigator.mediaDevices?.getUserMedia)return flash('المتصفح لا يدعم التسجيل الصوتي',true);try{const streamAudio=await navigator.mediaDevices.getUserMedia({audio:true});audioChunks=[];mediaRecorder=new MediaRecorder(streamAudio);mediaRecorder.ondataavailable=e=>{if(e.data.size)audioChunks.push(e.data)};mediaRecorder.onstop=()=>{streamAudio.getTracks().forEach(t=>t.stop());const blob=new Blob(audioChunks,{type:mediaRecorder.mimeType||'audio/webm'}),reader=new FileReader();reader.onload=()=>writeMessage({from:me.username,to:currentUser.username,kind:'audio',audio:reader.result,time:Date.now(),readBy:{[me.username]:Date.now()}});reader.readAsDataURL(blob)};mediaRecorder.start();$('recordBtn').classList.add('recording');$('recordBtn').textContent='■';flash('جاري تسجيل الصوت... اضغط للإيقاف')}catch{flash('تعذر الوصول إلى الميكروفون',true)}}function stopRecording(){if(mediaRecorder&&mediaRecorder.state!=='inactive'){mediaRecorder.stop();mediaRecorder=null;$('recordBtn').classList.remove('recording');$('recordBtn').textContent='🎙'}}
-const messageScroller=$('messages');let msgTouchY=0,msgTouching=false;messageScroller.addEventListener('touchstart',e=>{if(!e.touches.length)return;msgTouchY=e.touches[0].clientY;msgTouching=true},{passive:true});messageScroller.addEventListener('touchmove',e=>{if(!msgTouching||!e.touches.length)return;const dy=e.touches[0].clientY-msgTouchY;/* Block browser pull-to-refresh only when the chat is already at its top edge. Normal scrolling inside the message list remains enabled. */if(messageScroller.scrollTop<=0&&dy>0){e.preventDefault();}}, {passive:false});messageScroller.addEventListener('touchend',()=>{msgTouching=false},{passive:true});messageScroller.addEventListener('touchcancel',()=>{msgTouching=false},{passive:true});
-$('stickerBtn').onclick=()=>$('stickerModal').classList.remove('hidden');$('cancelSticker').onclick=()=>$('stickerModal').classList.add('hidden');$('chooseSticker').onclick=()=>$('stickerFile').click();$('stickerFile').onchange=async()=>{const f=$('stickerFile').files[0];$('stickerModal').classList.add('hidden');if(f)await sendSticker(f)};$('stickerModal').onclick=e=>{if(e.target===$('stickerModal'))$('stickerModal').classList.add('hidden')};$('sendBtn').onclick=send;$('messageInput').oninput=resizeComposer;$('messageInput').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}};
-async function startRealtime(){if(listStream)listStream();listStream=stream('chats/'+esc(me.username),loadChats);clearInterval(pollTimer);pollTimer=null}
-function compressPhoto(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const max=640,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',.82))};img.onerror=reject;img.src=r.result};r.onerror=reject;r.readAsDataURL(file)})}function openSettings(){settingsPhoto=me.photo||'';$('settingsUsername').value=me.username;$('settingsDisplayName').value=me.displayName||me.username.slice(1);$('settingsPassword').value='';$('settingsAvatar').src=settingsPhoto||fallbackAvatar(me.displayName||'M');$('settingsMsg').textContent='';$('settingsModal').classList.remove('hidden')}function closeSettings(){$('settingsModal').classList.add('hidden')}async function renameUser(oldUser,newUsername){if(oldUser.username===newUsername)return oldUser;const existing=await db(NS+'/'+esc(newUsername));if(existing)return null;const allChats=await db('chats/'+esc(oldUser.username))||{};for(const [other,chat] of Object.entries(allChats)){await db('chats/'+esc(newUsername)+'/'+esc(other),{method:'PUT',body:JSON.stringify(chat)});await db('chats/'+esc(other)+'/'+esc(newUsername),{method:'PUT',body:JSON.stringify(chat)});const oldKey=key(oldUser.username,other),newKey=key(newUsername,other),messages=await db('messages/'+esc(oldKey))||{};if(Object.keys(messages).length)await db('messages/'+esc(newKey),{method:'PUT',body:JSON.stringify(messages)});await db('messages/'+esc(oldKey),{method:'DELETE'});await db('chats/'+esc(other)+'/'+esc(oldUser.username),{method:'DELETE'})}const moved={...oldUser,username:newUsername,updatedAt:Date.now()};await db(NS+'/'+esc(newUsername),{method:'PUT',body:JSON.stringify(moved)});await db(NS+'/'+esc(oldUser.username),{method:'DELETE'});return moved}async function saveAccountSettings(){const newUsername=$('settingsUsername').value.trim().replace(/^@?/,'@'),displayName=$('settingsDisplayName').value.trim(),password=$('settingsPassword').value; if(!validUser(newUsername))return $('settingsMsg').textContent='اسم المستخدم يجب أن يكون مثل @ahmed_123';if(!displayName)return $('settingsMsg').textContent='اكتب الاسم الظاهر';$('saveSettingsBtn').disabled=true;try{const patch={displayName,photo:settingsPhoto,updatedAt:Date.now()};if(password)patch.password=password;let next={...me,...patch};if(newUsername!==me.username){next=await renameUser(next,newUsername);if(!next)return $('settingsMsg').textContent='اسم المستخدم مستخدم بالفعل'}else {await db(NS+'/'+esc(me.username),{method:'PATCH',body:JSON.stringify(patch)});next=await db(NS+'/'+esc(me.username));if(!next||next.displayName!==displayName||next.photo!==settingsPhoto)throw Error('SAVE_NOT_CONFIRMED')}const renamed=newUsername!==me.username;me=next;localStorage.setItem('madoUser',me.username);sessionStorage.setItem('madoUser',me.username);closeSettings();if(renamed){if(chatStream)chatStream();chatStream=null;currentUser=null;$('app').classList.remove('chat-open');$('chatView').classList.add('hidden');$('emptyMain').classList.remove('hidden');await startRealtime()}renderMe();await loadChats();$('userSearch').value='';$('results').innerHTML=''}catch(e){$('settingsMsg').textContent='تعذر حفظ التغييرات: '+(e.message||'حاول مرة أخرى');flash('لم يتم حفظ التغييرات',true)}finally{$('saveSettingsBtn').disabled=false}}$('newChatBtn').onclick=()=>{$('newChatModal').classList.remove('hidden');$('userSearch').focus()};$('closeNewChat').onclick=()=>{$('newChatModal').classList.add('hidden');$('userSearch').value='';$('results').innerHTML=''};$('newChatModal').onclick=e=>{if(e.target===$('newChatModal'))$('newChatModal').classList.add('hidden')};
-$('settingsBtn').onclick=openSettings;$('closeSettings').onclick=closeSettings;$('settingsModal').onclick=e=>{if(e.target===$('settingsModal'))closeSettings()};$('chooseAvatar').onclick=()=>{const input=$('avatarFile');input.value='';try{input.click()}catch{$('settingsMsg').textContent='تعذر فتح معرض الصور'}};$('avatarFile').onchange=async()=>{const input=$('avatarFile'),file=input.files&&input.files[0];if(!file)return;try{$('settingsMsg').textContent='جارٍ تجهيز الصورة...';const photo=await compressPhoto(file);settingsPhoto=photo;$('settingsAvatar').src=photo;$('settingsMsg').textContent='تم اختيار الصورة. اضغط حفظ التغييرات لإرسالها.'}catch(e){$('settingsMsg').textContent='تعذر قراءة الصورة من المعرض. اختر صورة JPG أو PNG.'}finally{input.value=''}};$('saveSettingsBtn').onclick=saveAccountSettings;$('logoutBtn').onclick=async()=>{if(chatStream)chatStream();if(profileStream)profileStream();if(listStream)listStream();await touchPresence();localStorage.removeItem('madoUser');sessionStorage.removeItem('madoUser');location.reload()};
-async function openApp(){ $('auth').classList.add('hidden');$('app').classList.remove('hidden');renderMe();await touchPresence();await loadChats();startRealtime();clearInterval(presenceTimer);presenceTimer=setInterval(touchPresence,20000);setInterval(async()=>{try{const fresh=await db(NS+'/'+esc(me.username));if(fresh?.blocked){localStorage.removeItem('madoUser');sessionStorage.removeItem('madoUser');location.reload()}else if(fresh){me=fresh;renderMe()}}catch{}},4000)}
-const saved=localStorage.getItem('madoUser')||sessionStorage.getItem('madoUser');if(saved){localStorage.setItem('madoUser',saved);(async()=>{try{const u=await db(NS+'/'+esc(saved));if(u&&!u.blocked){me=u;openApp()}else{localStorage.removeItem('madoUser');sessionStorage.removeItem('madoUser')}}catch{}})();}
+function closePlayer(){if(hls){hls.destroy();hls=null}modal.style.display="none";document.body.style.overflow="";wrap.innerHTML="";document.getElementById("playBtn").style.display="block";document.getElementById("muteBtn").style.display="block"}
+document.getElementById("close").onclick=closePlayer;modal.onclick=e=>{if(e.target===modal)closePlayer()};
+document.getElementById("fullBtn").onclick=()=>{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else wrap.requestFullscreen?.().catch(()=>{})};
+db.ref("streams").on("value",snap=>{const d=snap.val()||{},a=Object.entries(d).map(([id,v])=>({id,...v})).filter(x=>x.enabled!==false);a.sort((x,y)=>(y.createdAt||0)-(x.createdAt||0));grid.innerHTML="";empty.style.display=a.length?"none":"block";a.forEach(x=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<img class="thumb" src="${esc(x.image)}" alt=""><div class="body"><span class="live">● متاح الآن</span><div class="name">${esc(x.name)}</div><button class="watch">▶ شاهد الآن</button></div>`;c.querySelector(".watch").onclick=()=>openPlayer(x);grid.appendChild(c)})});
 </script></body></html>
